@@ -1,7 +1,8 @@
 var bb = require('./node_modules/bonescript');
 var fs = require('fs');
 //var record=require('./record');
-var record = require('./recorder');
+var recorder = require('./recorder');
+var record = new Recorder('1234', '2345');
 	
 var ledPin = bone.P8_21;
 var ledPin2 = bone.P8_25;
@@ -76,11 +77,12 @@ lightleds = function(t) {
                 record.recordTemperature(t, pourFinish);
                 record.recordPour(t, ((pourFinish - pourStart)/1000), pourFinish);
                 console.log ("pourFinished at: " + ts + "pour time = " + (pourFinish - pourStart)/1000 + "s");
-                record.recordTemp(t);
+                //record.recordTemp(t);
             };
         }
     }
     lasttemp = t;
+    record.recordTemperature(t, pourFinish);
     console.log ("Current: ", + t + " Last: " + lasttemp + " Room: " + roomtemp + " samples: " + samples);
     return;
 };
