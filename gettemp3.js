@@ -1,6 +1,7 @@
 var bb = require('./node_modules/bonescript');
 var fs = require('fs');
-var record=require('./record');
+//var record=require('./record');
+var record = require('./recorder');
 	
 var ledPin = bone.P8_21;
 var ledPin2 = bone.P8_25;
@@ -35,7 +36,8 @@ lightleds = function(t) {
                 pourFinished = true;
                 var ts = new Date;
                 pourFinish = ts.getTime();
-                record.recordTemp(t);
+                record.recordTemperature(t, pourFinish);
+                record.recordPour(t, ((pourFinish - pourStart)/1000), pourFinish);
                 console.log ("pourFinished at: " + ts + "pour time = " + (pourFinish - pourStart)/1000 + "s" + " Beer Temp " + t);
             };
         }else
@@ -71,6 +73,8 @@ lightleds = function(t) {
                 pourFinished = true;
                 var ts = new Date;
                 pourFinish = ts.getTime();
+                record.recordTemperature(t, pourFinish);
+                record.recordPour(t, ((pourFinish - pourStart)/1000), pourFinish);
                 console.log ("pourFinished at: " + ts + "pour time = " + (pourFinish - pourStart)/1000 + "s");
                 record.recordTemp(t);
             };
