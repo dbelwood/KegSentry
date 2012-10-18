@@ -37,8 +37,8 @@ lightleds = function(t) {
                 pourFinished = true;
                 var ts = new Date;
                 pourFinish = ts.getTime();
-                record.addTemperature(t, pourFinish);
-                record.addPour(t, ((pourFinish - pourStart)/1000), pourFinish);
+                record.addTemperature(t, new Date());
+                record.addPour(t, ((pourFinish - pourStart)/1000), new Date());
                 console.log ("pourFinished at: " + ts + "pour time = " + (pourFinish - pourStart)/1000 + "s" + " Beer Temp " + t);
             };
         }else
@@ -74,7 +74,7 @@ lightleds = function(t) {
                 pourFinished = true;
                 var ts = new Date;
                 pourFinish = ts.getTime();
-                record.addTemperature(t, pourFinish);
+                record.addTemperature(t, new Date());
                 record.addPour(t, ((pourFinish - pourStart)/1000), pourFinish);
                 console.log ("pourFinished at: " + ts + "pour time = " + (pourFinish - pourStart)/1000 + "s");
                 //record.recordTemp(t);
@@ -82,7 +82,7 @@ lightleds = function(t) {
         }
     }
     lasttemp = t;
-    record.addTemperature(t, pourFinish);
+    record.addTemperature(t, new Date());
     console.log ("Current: ", + t + " Last: " + lasttemp + " Room: " + roomtemp + " samples: " + samples);
     return;
 };
