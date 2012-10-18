@@ -1,7 +1,7 @@
 var bb = require('./node_modules/bonescript');
 var fs = require('fs');
 //var record=require('./record');
-var recorder = require('./recorder');
+var Recorder = require('./recorder');
 var record = new Recorder('1234', '2345');
 	
 var ledPin = bone.P8_21;
