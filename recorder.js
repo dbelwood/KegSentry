@@ -10,9 +10,6 @@ var record = function(barId, kegId) {
 	this.addPour.bind(this);
 }
 record.prototype = {
-	initialize: function() {
-
-	},
 	addTemperature: function(temperature, dateTime) {
 		rest.post(this.endpoint+'/temperatures', {data:{
 			"temperature" : parseInt(temperature), 
